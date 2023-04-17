@@ -8,8 +8,8 @@
     <div class="container">
       <h1>Weather App</h1>
       <form>
-        <input type="text" id="city" placeholder="Enter City">
-        <button type="button" onclick="getWeather()">Get Weather</button>
+        <input type="text" id="city" placeholder="Enter City" required>
+        <button type="submit">Get Weather</button>
       </form>
       <div id="weather-info"></div>
     </div>
@@ -51,28 +51,14 @@ button {
   font-size: 1.5rem;
   font-weight: bold;
 }
-function getWeather() {
-  const apiKey = 'your_api_key_here';
+function getWeather(event) {
+  event.preventDefault();
+  
+  const apiKey = '755ad5d398925ea34785d280b349ff8dd35daa7b0dba24924425161a39d2dfeb';
   const city = document.getElementById('city').value;
+
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
   fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      const description = data.weather[0].description;
-      const temp = data.main.temp;
-      const feelsLike = data.main.feels_like;
-      const humidity = data.main.humidity;
-
-      const weatherInfo = `Description: ${description}<br>
-                           Temperature: ${temp}°C<br>
-                           Feels like: ${feelsLike}°C<br>
-                           Humidity: ${humidity}%`;
-
-      document.getElementById('weather-info').innerHTML = weatherInfo;
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      document.getElementById('weather-info').innerHTML = 'Error: City not found';
-    });
-}
+    .then(response => {
+      if (!response.ok) {    
