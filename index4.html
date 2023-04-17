@@ -52,14 +52,11 @@
                                  Humidity: ${humidity}%`;
 
             document.getElementById('weather-info').innerHTML = weatherInfo;
-          })
-          .catch(error => {
-            console.error(error);
-            document.getElementById('weather-info').innerHTML = 'City not found';
           });
       }
-
-      document.querySelector('form').addEventListener('submit', getWeather);
+      
+      const form = document.querySelector('form');
+      form.addEventListener('submit', getWeather);
     </script>
   </body>
 </html>
