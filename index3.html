@@ -1,57 +1,76 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Calculator</title>
-	<link rel="stylesheet" href="style.css">
-</head>
-<body>	
-	<center>
-		<div class="timer">
-			<h2 id="countdown">00:00:00</h2>
-			<button onclick="startTimer()">Start</button>
-			<button onclick="stopTimer()">Stop</button>
-		</div>
-		<div class="name">
-			<p>언락커 AI항해자가 챗GPT와 협력하여 만들었습니다.</p>    
-		</div>
-		<div class="ads" style="position:relative">
-			<ins class="kakao_ad_area" style="position:absolute; left:0;"
-			data-ad-unit="DAN-P6a4dATOI4ig4KW6"
-			data-ad-width="250"
-			data-ad-height="250"></ins>
-			<script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
-		</div>
-	</center>
-	<script>
-		var countdown = document.getElementById("countdown");
-		var seconds = 0;
-		var minutes = 0;
-		var hours = 0;
-		var t;
+  <head>
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>	
+    <div class="timer">
+      <h2 id="countdown">00:00:00</h2>
+      <button onclick="startTimer()">Start</button>
+      <button onclick="stopTimer()">Stop</button>
+    </div>
+    <div class="ads" style="display:flex; justify-content:center;">
+      <ins class="kakao_ad_area" style="display:none;"
+      data-ad-unit="DAN-P6a4dATOI4ig4KW6"
+      data-ad-width="250"
+      data-ad-height="250"></ins>
+      <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+    </div>
+    <div class="name">
+      <p>언락커 AI항해자가 챗GPT와 협력하여 만들었습니다.</p>    
+    </div>
+    <style>
+      .timer {
+        text-align: center;
+        margin-top: 50px;
+      }
 
-		function startTimer() {
-		    t = setInterval(updateTimer, 1000);
-		}
+      #countdown {
+        font-size: 50px;
+        margin-bottom: 20px;
+      }
 
-		function updateTimer() {
-		    seconds++;
-		    if (seconds == 60) {
-		        seconds = 0;
-		        minutes++;
-		        if (minutes == 60) {
-		            minutes = 0;
-		            hours++;
-		        }
-		    }
-		    countdown.innerHTML = 
-		        (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + 
-		        (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + 
-		        (seconds > 9 ? seconds : "0" + seconds);
-		}
+      button {
+        padding: 10px 20px;
+        margin: 0 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+    </style>
+    <script>
+      var countdown = document.getElementById("countdown");
+      var seconds = 0;
+      var minutes = 0;
+      var hours = 0;
+      var t;
 
-		function stopTimer() {
-		    clearInterval(t);
-		}
-	</script>
-</body>
+      function startTimer() {
+        t = setInterval(updateTimer, 1000);
+      }
+
+      function updateTimer() {
+        seconds++;
+        if (seconds == 60) {
+          seconds = 0;
+          minutes++;
+          if (minutes == 60) {
+            minutes = 0;
+            hours++;
+          }
+        }
+        countdown.innerHTML = 
+          (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + 
+          (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + 
+          (seconds > 9 ? seconds : "0" + seconds);
+      }
+
+      function stopTimer() {
+        clearInterval(t);
+      }
+    </script>
+  </body>
 </html>
