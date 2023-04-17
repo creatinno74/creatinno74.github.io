@@ -2,32 +2,72 @@
 <html>
 <head>
 	<title>Calculator</title>
-	<link rel="stylesheet" href="style.css">
+	<style>
+		.timer {
+			text-align: center;
+			margin-top: 50px;
+		}
+
+		#countdown {
+			font-size: 50px;
+			margin-bottom: 20px;
+		}
+
+		button {
+			padding: 10px 20px;
+			margin: 0 10px;
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+
+		.ads {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin-top: 30px;
+		}
+
+		.kakao_ad_area {
+			display: block;
+			width: 250px;
+			height: 150px;
+		}
+
+		.name {
+			text-align: center;
+			margin-top: 30px;
+			font-size: 14px;
+		}
+	</style>
 </head>
 <body>	
-	<center>
-		<div class="timer">
-			<h2 id="countdown">00:00:00</h2>
-			<button onclick="startTimer()">Start</button>
-			<button onclick="stopTimer()">Stop</button>
-		</div>
-		<div class="ads">
+	<div class="timer">
+	  <h2 id="countdown">00:00:00</h2>
+	  <button onclick="startTimer()">Start</button>
+	  <button onclick="stopTimer()">Stop</button>
+	</div>
+	<div class="ads">
+		<div>
+			<p>배너 광고</p>
 			<ins class="kakao_ad_area" style="display:none;"
-			data-ad-unit="DAN-P6a4dATOI4ig4KW6"
-			data-ad-width="250"
-			data-ad-height="250"></ins>
+			data-ad-unit = "DAN-P6a4dATOI4ig4KW6"
+			data-ad-width = "250"
+			data-ad-height = "150"></ins>
 			<script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
 		</div>
-		<div class="name">
-			<p>언락커 AI항해자가 챗GPT와 협력하여 만들었습니다.</p>    
-		</div>
-	</center>
+	</div>
+	<div class="name">
+	   <p>언락커 AI항해자가 챗GPT와 협력하여 만들었습니다.</p>    
+	</div>
 	<script>
 		var countdown = document.getElementById("countdown");
 		var seconds = 0;
 		var minutes = 0;
 		var hours = 0;
-		vr t;
+		var t;
 
 		function startTimer() {
 		    t = setInterval(updateTimer, 1000);
