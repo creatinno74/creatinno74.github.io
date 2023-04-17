@@ -1,0 +1,53 @@
+<div class="timer">
+  <h2 id="countdown">00:00:00</h2>
+  <button onclick="startTimer()">Start</button>
+  <button onclick="stopTimer()">Stop</button>
+</div>
+.timer {
+  text-align: center;
+  margin-top: 50px;
+}
+
+#countdown {
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+var countdown = document.getElementById("countdown");
+var seconds = 0;
+var minutes = 0;
+var hours = 0;
+var t;
+
+function startTimer() {
+    t = setInterval(updateTimer, 1000);
+}
+
+function updateTimer() {
+    seconds++;
+    if (seconds == 60) {
+        seconds = 0;
+        minutes++;
+        if (minutes == 60) {
+            minutes = 0;
+            hours++;
+        }
+    }
+    countdown.innerHTML = 
+        (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + 
+        (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + 
+        (seconds > 9 ? seconds : "0" + seconds);
+}
+
+function stopTimer() {
+    clearInterval(t);
+}
