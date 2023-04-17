@@ -1,62 +1,64 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Weather App</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <div class="container">
-      <h1>Weather App</h1>
-      <form>
-        <input type="text" id="city" placeholder="Enter City" required>
-        <button type="submit">Get Weather</button>
-      </form>
-      <div id="weather-info"></div>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather JS</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.0.1/dist/simplex/bootstrap.min.css">
+</head>
+<body class="bg-dark">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mx-auto text-center bg-light mt-5 p-5 rounded">
+        <h1 id="w-location"></h1>
+        <h3 id="w-desc"></h3>
+        <h3 id="w-string"></h3>
+        <ui class="list-group mt-3">
+          <li class="list-group-item" id="w-humidity"></li>
+          <li class="list-group-item" id="w-feels-like"></li>
+          <li class="list-group-item" id="w-wind"></li>
+        </ui>
+        <hr>
+        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#locModal">
+          Change Location
+        </button>
+      </div>
     </div>
-    <div class="ads">
-      <div>
-        <p>언락커 AI항해자가 챗GPT와 협력하여 만들었습니다.</p>
-        <ins class="kakao_ad_area" style="display:none;"
-          data-ad-unit="DAN-P6a4dATOI4ig4KW6"
-          data-ad-width="250"
-          data-ad-height="150"></ins>
-        <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
-      </div>    
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="locModal" tabindex="-1" aria-labelledby="locModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="locModalLabel">Choose Location</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="w-form">
+            <div class="form-group">
+              <label for="city" class="form-label">City</label>
+              <input type="text" id="city" class="form-control">
+            </div><br>
+            <div class="form-group">
+              <label for="country" class="form-label">Country</label>
+              <input type="text" id="country" class="form-control">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" id="w-change-btn" class="btn btn-success">Save changes</button>
+        </div>
+      </div>
     </div>
-    <script src="script.js"></script>
-    <script>
-      const apiKey = 755ad5d398925ea34785d280b349ff8dd35daa7b0dba24924425161a39d2dfeb;
-      
-      function getWeather(event) {
-        event.preventDefault();
-  
-        const city = document.getElementById('city').value;
-        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  </div>
 
-        fetch(url)
-          .then(response => {
-            if (!response.ok) {
-              throw new Error('City not found');
-            }
-            return response.json();
-          })
-          .then(data => {
-            const description = data.weather[0].description;
-            const temp = data.main.temp;
-            const feelsLike = data.main.feels_like;
-            const humidity = data.main.humidity;
-
-            const weatherInfo = `Description: ${description}<br>
-                                 Temperature: ${temp}°C<br>
-                                 Feels like: ${feelsLike}°C<br>
-                                 Humidity: ${humidity}%`;
-
-            document.getElementById('weather-info').innerHTML = weatherInfo;
-          });
-      }
-      
-      const form = document.querySelector('form');
-      form.addEventListener('submit', getWeather);
-    </script>
-  </body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  <script src="storage.js"></script>
+  <script src="weather.js"></script>
+  <script src="ui.js"></script>
+  <script src="app.js"></script>
+</body>
 </html>
