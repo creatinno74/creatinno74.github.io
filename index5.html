@@ -31,25 +31,12 @@
         cursor: pointer;
       }
     </style>
+    <script src="app.js"></script>
   </head>
   <body>
     <h1>메모장 앱</h1>
     <textarea id="memo" placeholder="메모를 입력하세요."></textarea>
     <button id="saveBtn">저장</button>
-    <script src="app.js"></script>
-    const memo = document.getElementById('memo');
-const saveBtn = document.getElementById('saveBtn');
-
-// 저장 버튼 클릭 시 localStorage에 메모 저장
-saveBtn.addEventListener('click', () => {
-  localStorage.setItem('memo', memo.value);
-  alert('메모가 저장되었습니다.');
-});
-
-// 페이지 로드 시 localStorage에서 메모 불러오기
-window.addEventListener('load', () => {
-  memo.value = localStorage.getItem('memo');
-});
     <div class="ads">
 		<ins class="kakao_ad_area" style="display:none;"
 data-ad-unit = "DAN-P6a4dATOI4ig4KW6"
@@ -60,6 +47,5 @@ data-ad-height = "250"></ins>
 	<div class="name">
 		<p></p>
 	</div>
-	<script src="script.js"></script>
   </body>
 </html>
