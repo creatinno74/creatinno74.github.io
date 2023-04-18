@@ -1,0 +1,57 @@
+<!-- HTML -->
+<div id="calendar"></div>
+/* CSS */
+#calendar {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+#calendar table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#calendar th,
+#calendar td {
+  text-align: center;
+  border: 1px solid #ccc;// JavaScript
+function generateCalendar(target, month, year) {
+  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  const firstDay = new Date(year, month, 1);
+  const lastDay = new Date(year, month + 1, 0);
+  const startingDay = firstDay.getDay();
+  const monthLength = lastDay.getDate();
+  const monthName = months[month];
+
+  let calendarHtml = "<table>";
+  calendarHtml += `<caption>${monthName} ${year}</caption>`;
+  calendarHtml += "<thead><tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</
+
+  padding: 10px;
+}
+
+#calendar th {
+  background-color: #eee;
+}
+
+#calendar td {
+  height: auto;
+  min-height: 80px;
+}
+
+#calendar td:hover {
+  background-color: #eee;
+  cursor: pointer;
+}
+// JavaScript
+function generateCalendar(target, month, year) {
+  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  const firstDay = new Date(year, month, 1);
+  const lastDay = new Date(year, month + 1, 0);
+  const startingDay = firstDay.getDay();
+  const monthLength = lastDay.getDate();
+  const monthName = months[month];
+
+  let calendarHtml = "<table>";
+  calendarHtml += `<caption>${monthName} ${year}</caption>`;
+  calendarHtml += "<thead><tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</
