@@ -31,7 +31,6 @@
         cursor: pointer;
       }
     </style>
-    <script src="app.js"></script>
   </head>
   <body>
     <h1>메모장 앱</h1>
@@ -47,5 +46,31 @@ data-ad-height = "250"></ins>
 	<div class="name">
 		<p></p>
 	</div>
+	<div class="ads">
+		<ins class="kakao_ad_area" style="display:none;"
+data-ad-unit = "DAN-P6a4dATOI4ig4KW6"
+data-ad-width = "250"
+data-ad-height = "250"></ins>
+<script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+	</div>
+	<div class="name">
+		<p></p>
+	</div>
+	<script src="app.js"></script>
+	<script>
+		window.onload = function() {
+			const memo = document.getElementById('memo');
+			const saveBtn = document.getElementById('saveBtn');
+
+			// 저장 버튼 클릭 시 localStorage에 메모 저장
+			saveBtn.addEventListener('click', () => {
+			  localStorage.setItem('memo', memo.value);
+			  alert('메모가 저장되었습니다.');
+			});
+
+			// 페이지 로드 시 localStorage에서 메모 불러오기
+			memo.value = localStorage.getItem('memo');
+		};
+	</script>
   </body>
 </html>
