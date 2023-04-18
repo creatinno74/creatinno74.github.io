@@ -1,57 +1,65 @@
-<!-- HTML -->
-<div id="calendar"></div>
-/* CSS */
-#calendar {
-  font-family: Arial, sans-serif;
-  font-size: 14px;
-}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>메모장 앱</title>
+    <style>
+       body {
+        font-family: Arial, sans-serif;
+      }
+      h1 {
+        text-align: center;
+      }
+      #memo {
+        width: 80%;
+        height: 300px;
+        margin: 0 auto;
+        border: 1px solid #ccc;
+        padding: 10px;
+        font-size: 16px;
+        resize: none;
+      }
+      #saveBtn {
+        display: block;
+        margin: 10px auto;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>메모장 앱</h1>
+    <textarea id="memo" placeholder="메모를 입력하세요."></textarea>
+    <button id="saveBtn">저장</button>
+    <script src="app.js"></script>
+    const memo = document.getElementById('memo');
+const saveBtn = document.getElementById('saveBtn');
 
-#calendar table {
-  width: 100%;
-  border-collapse: collapse;
-}
+// 저장 버튼 클릭 시 localStorage에 메모 저장
+saveBtn.addEventListener('click', () => {
+  localStorage.setItem('memo', memo.value);
+  alert('메모가 저장되었습니다.');
+});
 
-#calendar th,
-#calendar td {
-  text-align: center;
-  border: 1px solid #ccc;// JavaScript
-function generateCalendar(target, month, year) {
-  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  const firstDay = new Date(year, month, 1);
-  const lastDay = new Date(year, month + 1, 0);
-  const startingDay = firstDay.getDay();
-  const monthLength = lastDay.getDate();
-  const monthName = months[month];
-
-  let calendarHtml = "<table>";
-  calendarHtml += `<caption>${monthName} ${year}</caption>`;
-  calendarHtml += "<thead><tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</
-
-  padding: 10px;
-}
-
-#calendar th {
-  background-color: #eee;
-}
-
-#calendar td {
-  height: auto;
-  min-height: 80px;
-}
-
-#calendar td:hover {
-  background-color: #eee;
-  cursor: pointer;
-}
-// JavaScript
-function generateCalendar(target, month, year) {
-  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  const firstDay = new Date(year, month, 1);
-  const lastDay = new Date(year, month + 1, 0);
-  const startingDay = firstDay.getDay();
-  const monthLength = lastDay.getDate();
-  const monthName = months[month];
-
-  let calendarHtml = "<table>";
-  calendarHtml += `<caption>${monthName} ${year}</caption>`;
-  calendarHtml += "<thead><tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</
+// 페이지 로드 시 localStorage에서 메모 불러오기
+window.addEventListener('load', () => {
+  memo.value = localStorage.getItem('memo');
+});
+    <div class="ads">
+		<ins class="kakao_ad_area" style="display:none;"
+data-ad-unit = "DAN-P6a4dATOI4ig4KW6"
+data-ad-width = "250"
+data-ad-height = "250"></ins>
+<script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+	</div>
+	<div class="name">
+		<p></p>
+	</div>
+	<script src="script.js"></script>
+  </body>
+</html>
